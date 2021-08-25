@@ -1,0 +1,200 @@
+﻿<Window 
+    
+        x:Class="GUI.MainWindow"
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+        xmlns:local="clr-namespace:GUI"
+        
+        mc:Ignorable="d"
+        
+        Title="TicTacToe-2021" Height="450" Width="450">
+
+    <!--Det overordnet Grid tildeles et x:Name, da det benyttes til at 
+    oprette forbindelse til den bagvedliggende kode. Dette gøres ved at MainGrid for angivet sin dataContext
+    til en instans af ClassTextBoxHandler. Dette gøre i constructoren i MainWindow.xaml.cs.
+    BackGroundColor angiver hvilken farve der skal udfylde MainGrid, farven sættes via Binding.
+    -->
+    
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Lucida Console"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontSize" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid x:Name="MainGrid">
+
+        <Grid x:Name="GamePadGrid"
+          
+          Margin="3"
+          
+          Background="{Binding gridColor}">
+
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="1*"/>
+
+                <ColumnDefinition Width="1*"/>
+
+                <ColumnDefinition Width="1*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="1*"/>
+
+                <RowDefinition Height="1*"/>
+
+                <RowDefinition Height="1*"/>
+
+            </Grid.RowDefinitions>
+
+            <!--Alle TextBoxe er opbygge ens og er alle knyttet til samme eventhandler.
+                For at kunne afgøre hvilken TextBox der er blevet Dobbeltklikket på,
+                er alle TextBoxe oprettet med en værdi i element Tag som 
+                angiver hvilken kolonne og række den er placeret i.
+                F.eks. giver værdien 1,2 en placering i miderste række længst til højre.
+                FortSize er angivet ved hjælp af en særlig form for binding.
+                Værdien som angiver størrelsen på fonten, er betænget af højden af TextBoxen.
+                Denne værdi bliver tilgængelig gennem det property i TextBox der hedder ActualHeight.
+                For at få adgang til denne værdi, skal der angives en RelativSource som er TextBoxen selv,
+                ved at benytte kodeordet Self
+            
+                {Binding ActualHeight, RelativeSource={RelativeSource Self}
+            
+                Texten i TextBoxen bindes til property i ClassTextBoxCollection,
+                ved hjælp af en almiondelig simpel Binding.
+            -->
+
+            <TextBox 
+                
+                Tag="0,0"
+                
+                Grid.Column="0"
+                
+                Grid.Row="0"
+                
+                Text="{Binding ClassTextBoxCollection.textBox00}" 
+                
+                MouseDoubleClick="TextBox_MouseDoubleClick"/>
+
+            <TextBox 
+                
+                Tag="1,0"
+                
+                Grid.Column="1"
+                
+                Grid.Row="0"
+                
+                Text="{Binding ClassTextBoxCollection.textBox10}"
+                
+                MouseDoubleClick="TextBox_MouseDoubleClick"/>
+
+            <TextBox 
+                
+                Tag="2,0"
+                
+                Grid.Column="2"
+                
+                Grid.Row="0"
+                
+                Text="{Binding ClassTextBoxCollection.textBox20}"
+                
+                MouseDoubleClick="TextBox_MouseDoubleClick"/>
+
+            <TextBox 
+                
+                Tag="0,1"
+                
+                Grid.Column="0"
+                
+                Grid.Row="1"
+                
+                Text="{Binding ClassTextBoxCollection.textBox01}"
+                
+                MouseDoubleClick="TextBox_MouseDoubleClick"/>
+            
+            <TextBox 
+                
+                Tag="1,1"
+                
+                Grid.Column="1"
+                
+                Grid.Row="1"
+                
+                Text="{Binding ClassTextBoxCollection.textBox11}"
+                
+                MouseDoubleClick="TextBox_MouseDoubleClick"/>
+
+            <TextBox 
+                
+                Tag="2,1"
+                
+                Grid.Column="2"
+                
+                Grid.Row="1"
+                
+                Text="{Binding ClassTextBoxCollection.textBox21}"
+                
+                MouseDoubleClick="TextBox_MouseDoubleClick"/>
+
+            <TextBox 
+                
+                Tag="0,2"
+                
+                Grid.Column="0"
+                
+                Grid.Row="2"
+                
+                Text="{Binding ClassTextBoxCollection.textBox02}"
+                
+                MouseDoubleClick="TextBox_MouseDoubleClick"/>
+
+            <TextBox 
+                
+                Tag="1,2"
+                
+                Grid.Column="1"
+                
+                Grid.Row="2"
+                
+                Text="{Binding ClassTextBoxCollection.textBox12}"
+                
+                MouseDoubleClick="TextBox_MouseDoubleClick"/>
+
+            <TextBox 
+                
+                Tag="2,2"
+                
+                Grid.Column="2"
+                
+                Grid.Row="2"
+                
+                Text="{Binding ClassTextBoxCollection.textBox22}"
+                
+                MouseDoubleClick="TextBox_MouseDoubleClick"/>
+            
+        </Grid>
+
+        <!--Dette Grid benyttes til at angive hvem der har vundet spiller.
+            For at få det vist skal det parameteroverføres til construkeren i UserControlWinner.-->
+
+        <Grid x:Name="WinnerGrid">
+            
+        </Grid>
+
+    </Grid>
+
+</Window>

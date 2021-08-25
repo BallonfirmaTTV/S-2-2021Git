@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IO.ClassDbCon" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAEACAAAAAAAAAAUAgAAIAAAAIAAAAABAAAQA=</HashCode>
+      <FileName>ClassDbCon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IO.ClassFamilyDB" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAgAAAAAACAAAAAgAAABAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>ClassFamilyDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
